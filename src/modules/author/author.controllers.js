@@ -26,14 +26,17 @@ export const getAuthorById = catchError(async (req, res, next) => {
 });
 
 export const updateAuthor = catchError(async (req, res, next) => {
-  const author = await Author.findByIdAndUpdate(req.params.authorId, req.body);
+  const author = await Author.findByIdAndUpdate(
+    { _id: req.params.authorId },
+    req.body
+  );
   if (!author) return next(new AppError("there is no author found, 404"));
 
   return res.status(201).json({ message: "success", author });
 });
 
 export const deleteAuthor = catchError(async (req, res, next) => {
-  const author = await Author.findByIdAndDelete(req.params.authorId);
+  const author = await Author.findByIdAndDelete({ _id: req.params.authorId });
   if (!author) return next(new AppError("there is no author found, 404"));
 
   return res.status(201).json({ message: "success", author });
