@@ -19,21 +19,21 @@ export const getAllBooks = catchError(async (req, res, next) => {
 });
 
 export const getBookById = catchError(async (req, res, next) => {
-  const book = await Book.findById(req.params.id);
+  const book = await Book.findById(req.params.bookId);
   if (!book) return next(new AppError("there is no book found, 404"));
 
   return res.status(201).json({ message: "success", book });
 });
 
 export const updateBook = catchError(async (req, res, next) => {
-  const book = await Book.findByIdAndUpdate(req.params.id, req.body);
+  const book = await Book.findByIdAndUpdate(req.params.bookId, req.body);
   if (!book) return next(new AppError("there is no book found, 404"));
 
   return res.status(201).json({ message: "success", book });
 });
 
 export const deleteBook = catchError(async (req, res, next) => {
-  const book = await Book.findByIdAndDelete(req.params.id, req.body);
+  const book = await Book.findByIdAndDelete(req.params.bookId, req.body);
   if (!book) return next(new AppError("there is no book found, 404"));
 
   return res.status(201).json({ message: "success", book });

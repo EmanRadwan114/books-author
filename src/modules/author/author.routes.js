@@ -10,6 +10,6 @@ const authorRouter = Router();
 
 authorRouter.route("/").post(addAuthor).get(getAllAuthors);
 
-authorRouter.route("/:bookId").patch(updateAuthor).delete(deleteAuthor);
+authorRouter.route("/:authorId").patch(updateAuthor).delete(deleteAuthor);
 
 export default authorRouter;
