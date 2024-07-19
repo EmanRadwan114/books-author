@@ -33,7 +33,7 @@ export const updateBook = catchError(async (req, res, next) => {
 });
 
 export const deleteBook = catchError(async (req, res, next) => {
-  const book = await Book.findByIdAndDelete(req.params.bookId, req.body);
+  const book = await Book.findByIdAndDelete(req.params.bookId);
   if (!book) return next(new AppError("there is no book found, 404"));
 
   return res.status(201).json({ message: "success", book });
