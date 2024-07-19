@@ -11,9 +11,7 @@ const schema = new Schema({
   birthDate: {
     type: Date,
   },
-  books: {
-    type: [mongoose.Types.ObjectId],
-  },
+  books: [{ type: mongoose.Schema.Types.ObjectId, ref: "Book" }],
 });
 
 const Author = mongoose.model("Author", schema);
