@@ -3,6 +3,7 @@ import {
   addBook,
   deleteBook,
   getAllBooks,
+  getBookById,
   updateBook,
 } from "./book.controllers.js";
 
@@ -10,6 +11,10 @@ const bookRouter = Router();
 
 bookRouter.route("/").post(addBook).get(getAllBooks);
 
-bookRouter.route("/:bookId").patch(updateBook).delete(deleteBook);
+bookRouter
+  .route("/:bookId")
+  .get(getBookById)
+  .patch(updateBook)
+  .delete(deleteBook);
 
 export default bookRouter;
