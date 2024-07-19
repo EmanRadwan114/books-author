@@ -28,7 +28,8 @@ export const getAuthorById = catchError(async (req, res, next) => {
 export const updateAuthor = catchError(async (req, res, next) => {
   const author = await Author.findByIdAndUpdate(
     { _id: req.params.authorId },
-    req.body
+    req.body,
+    { new: true }
   );
   if (!author) return next(new AppError("there is no author found, 404"));
 

@@ -28,7 +28,8 @@ export const getBookById = catchError(async (req, res, next) => {
 export const updateBook = catchError(async (req, res, next) => {
   const book = await Book.findByIdAndUpdate(
     { _id: req.params.bookId },
-    req.body
+    req.body,
+    { new: true }
   );
   if (!book) return next(new AppError("there is no book found, 404"));
 
